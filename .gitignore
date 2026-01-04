@@ -14,3 +14,13 @@ __pycache__/
 # OS files
 .DS_Store
 Thumbs.db
+# TensorBoard logs
+logs/
+regressionlogs/
+
+# Media files
+*.webm
+*.mp4
+
+# Model training artifacts (optional later)
+*.tfevents.*

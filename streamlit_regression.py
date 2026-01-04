@@ -6,7 +6,7 @@ import pandas as pd
 import pickle
 
 # Load the trained model
-model = tf.keras.models.load_model('model.h5')
+model = tf.keras.models.load_model('regression_model.h5')
 
 # Load the encoders and scaler
 with open('label_encoder_gender.pkl', 'rb') as file:
@@ -34,6 +34,7 @@ num_of_products = st.slider('Number of Products', 1, 4)
 has_cr_card = st.selectbox('Has Credit Card', [0, 1])
 is_active_member = st.selectbox('Is Active Member', [0, 1])
 exited = st.selectbox('Exited', [0, 1])
+
 # Prepare the input data
 input_data = pd.DataFrame({
     'CreditScore': [credit_score],
@@ -62,6 +63,5 @@ input_data_scaled = scaler.transform(input_data)
 prediction = model.predict(input_data_scaled)
 prediction_salary = prediction[0][0]
 
-st.write(f'Predicted Estimated Salary: {prediction_salary:.2f}')
-
+st.write(f'Predicted Salary: {prediction_salary:.2f}')
 
